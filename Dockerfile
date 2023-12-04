@@ -3,8 +3,8 @@ RUN echo 'APT::Install-Suggests "0";' >> /etc/apt/apt.conf.d/00-docker
 RUN echo 'APT::Install-Recommends "0";' >> /etc/apt/apt.conf.d/00-docker
 RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update \
-  && apt-get install -y unzip vim apt-utils perl python3 openjdk-11-jdk wget curl inetutils-telnet \
-  && apt-get install -y tomcat9 tomcat9-admin 
+  && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y unzip vim apt-utils perl python3 openjdk-11-jdk wget curl inetutils-telnet \
+  && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y tomcat9 tomcat9-admin ansible
 
 COPY appdsmartagent_cli_64_linux_23.11.0.1239.zip /tmp
 COPY appdsmartagent_64_linux_23.11.0.1239.zip /tmp
